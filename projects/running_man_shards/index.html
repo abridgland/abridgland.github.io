@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>WebGL Boilerplate</title>
+
+    <style>
+        body {
+            background-color: #000000;
+            margin: 0px;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas></canvas>
+    <div id="info"></div>
+
+    <script id="vs" type="x-shader/vertex">
+
+        attribute vec2 position;
+
+        uniform mat4 mvp;
+
+        void main() {
+
+            gl_Position = mvp * vec4( position, 0.0, 1.0 );
+
+        }
+
+    </script>
+
+    <script id="fs" type="x-shader/fragment">
+
+        uniform float time;
+        uniform vec2 resolution;
+
+        void main( void ) {
+
+            gl_FragColor = vec4( 195.0/255.0, 254.0/255.0, 250.0/255.0, 1.0 );
+
+        }
+
+    </script>
+
+    <script id="output-vs" type="x-shader/vertex">
+
+        attribute vec2 position;
+        varying vec2 v_coordinates;
+
+        void main() {
+            v_coordinates = position.xy * 0.5 + 0.5;
+            gl_Position = vec4(position, 0.0, 1.0);
+        }
+
+    </script>
+
+    <script id="hblur-fs" type="x-shader/fragment">
+
+        uniform sampler2D shardTex;
+        uniform vec2 resolution;
+        varying vec2 v_coordinates;
+        //out vec4 fragColor;
+
+
+        void main() {
+            vec4 sum = vec4(0.0);
+            float totalScale = 0.0;
+            for (int x = -10; x <= 10; x++) {
+                float scale = (0.0001 + abs(float(x)*0.15));
+                sum += texture2D(shardTex, vec2(v_coordinates.x + float(x) / resolution.x, v_coordinates.y)) / scale;
+                totalScale += scale;
+            }
+            sum /= totalScale;
+            gl_FragColor = sum;
+        }
+
+    </script>
+
+    <script id="vblur-fs" type="x-shader/fragment">
+
+        uniform sampler2D fullShardTex;
+        uniform sampler2D hblurTex;
+        uniform vec2 resolution;
+        varying vec2 v_coordinates;
+        //out vec4 fragColor;
+
+
+        void main() {
+            vec4 res = vec4(0.0);
+            if (all(greaterThan(texture2D(fullShardTex, v_coordinates), vec4(0.0)))) {
+                res = texture2D(fullShardTex, v_coordinates);
+            } else {
+                float totalScale = 0.0;
+                for (int y = -10; y <= 10; y++) {
+                    float scale = (0.0001 + 10.0 - abs(float(y))*0.5);
+                    res += texture2D(hblurTex, vec2(v_coordinates.x, v_coordinates.y + float(y) / resolution.y)) * scale;
+                    totalScale += scale;
+                }
+                res /= totalScale;
+                res *= vec4( 195.0/255.0, 254.0/255.0, 250.0/255.0, 1.0 );
+                res.a = 0.75;
+            }
+            gl_FragColor = res;
+        }
+
+    </script>
+
+    <script type="text/javascript" src="gl-matrix-min.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+
+</body>
+</html>
