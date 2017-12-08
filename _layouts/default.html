@@ -4,7 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
   <head>
-      <title>{{ site.name }} - {{ site.description }}</title>
+      <title>{{ site.title }}</title>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
       <meta http-equiv="content-language" content="en-gb" />
@@ -26,12 +26,14 @@
         <img src="{{ site.baseurl }}/assets/img/avatar.png" alt="Picture" title="That's me, {{ site.author }}.">
       </figure>
       <div class="bio">
-          <h1>Hi, I'm {{ site.author }}.</h1>
+          <h1>{{ site.author }}</h1>
           <p>{{ site.author-bio }}</p>
       </div>
       <nav>
-        <h6>Follow me on</h6>
+        <h6>Links</h6>
         <ul>
+          <li><a target="_blank" href="http://bridg.land">bridg.land</a></li>
+          <li><a target="_blank" href="http://bridg.land/posts">Posts</a></li>
           {% if site.twitter %}
           <li><a target="_blank" href="https://twitter.com/{{ site.twitter }}">Twitter</a></li>
           {% endif %}
@@ -53,7 +55,7 @@
 
       <header>
         <div class="h-wrap">
-          <h1 class="title"><a href="{{ site.baseurl | split:'/' | join:'/' | append:'/'  }}" title="Back to Homepage">{{ site.name }}</a></h1>
+          <h1 class="title"><a href="{{ site.baseurl | split:'/' | join:'/' | append:'/posts'  }}" title="Back to Posts">{{ site.name }}</a></h1>
           <a class="menu-icon" title="Open Bio"><span class="lines"></span></a>
         </div>
       </header>
@@ -63,7 +65,7 @@
       </main>
 
       <footer>
-        <small>Powered by Jekyll - Theme: <a href="https://github.com/m3xm/hikari-for-Jekyll">hikari</a> - &copy; {{ site.author }}</small>
+        <small>Powered by Jekyll - Theme based on: <a href="https://github.com/m3xm/hikari-for-Jekyll">hikari</a> - &copy; {{ site.author }}</small>
       </footer>
 
     </div>

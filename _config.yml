@@ -13,16 +13,19 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Alex Bridgland
+name: AB
+title: AB - Posts
 email: alex.bridgland@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  Alex Bridgland blog/posts.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://bridg.land" # the base hostname & protocol for your site, e.g. http://example.com
 author: "Alex Bridgland"
-author-bio: "Alex Bridgland bio."
+author-bio: >
+  A place for me to share things I've been thinking about :)
+  <br>
+  <br>
+  Contact: alex.bridgland &#127760; gmail
 
 # Build settings
 markdown: kramdown
@@ -39,7 +42,7 @@ github: bridgo
 
 markdown: kramdown
 permalink: /posts/:categories/:year/:month/:day/:title/
-highlighter: pygments
+highlighter: rouge
 
 paginate: 10
 paginate_path: "/posts/:num"
