@@ -213,7 +213,7 @@ $$ \begin{pmatrix}\mathbf{y} \\ \mathbf{y}_*\end{pmatrix} \sim\mathcal{N}\left(\
 
 where \\( \mathbf{K}=\kappa(\mathbf{x}, \mathbf{x}) \\), \\( \mathbf{K}\_\* = \kappa(\mathbf{x}, \mathbf{x}\_\*) \\) and \\( \mathbf{K}\_{\*\*}=\kappa(\mathbf{x}\_\*, \mathbf{x}\_\*)\\). As before we are going to stick with a zero mean.
 
-However this is modelling \\( p(\mathbf{y}, \mathbf{y}\_\*\vert \mathbf{x}, \mathbf{x}\_\*) \\) and we only want a distribution over \\( \mathbf{y}\_\*\\)!
+However this is modeling \\( p(\mathbf{y}, \mathbf{y}\_\*\vert \mathbf{x}, \mathbf{x}\_\*) \\) and we only want a distribution over \\( \mathbf{y}\_\*\\)!
 
 ### Conditioning Multivariate Gaussians
 
