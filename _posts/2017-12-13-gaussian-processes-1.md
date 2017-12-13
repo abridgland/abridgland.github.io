@@ -227,6 +227,8 @@ p(\mathbf{y}_*\vert \mathbf{x}_*, \mathbf{x}, \mathbf{y})&=\mathcal{N}(\mathbf{y
 
 Now we have a posterior distribution over \\( \mathbf{y}\_\* \\) using a prior distribution and some observations!
 
+_NB: The code below would not be used in practice since \\( \mathbf{K} \\) can often be poorly conditioned, so its inverse might be inaccurate. A better approach is covered in part II of this guide!_
+
 {% highlight python %}
 K = k(x_obs, x_obs)
 K_s = k(x_obs, x_s)
