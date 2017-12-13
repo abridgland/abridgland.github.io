@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 name: AB # Displayed at top of site in header
-title: AB - Posts
+title: AB - Posts # Used as html title if none is provided in the front matter
 email: alex.bridgland@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Alex Bridgland blog/posts.
